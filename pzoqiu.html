@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box {
+				width: 700px;
+				height: 500px;
+				border: 2px solid black;
+				position: relative;
+				top: 100px;
+				left: 300px;
+			}
+			
+			.qq {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				background-color: red;
+				border-radius: 50%;
+				background: url(img/56cfbc20cf6fc.jpg)no-repeat;
+				background-size: 30px 30px;
+			}
+		</style>
+	</head>
+
+	<body style="background: url(img/timg.jpg)no-repeat;background-size:100% 700px ; ">
+		<div id="box">
+
+		</div>
+		 <audio id="yinyue" src="20170418163926_65_6.mp3"></audio>
+		<script type="text/javascript">
+			 var yin=document.getElementById("yinyue")
+			function Arr(left, top) {
+				
+				this.box = document.getElementById("box")
+				this.qiu = document.createElement("p");
+				this.box.appendChild(this.qiu);
+				this.qiu.className = "qq"
+				this.lol = 30
+				this.left = left || Math.random() * (box.clientWidth - this.lol);
+				this.top = top || Math.random() * (box.clientHeight - this.lol);
+				this.qiu.style.left = this.left + "px"
+				this.qiu.style.top = this.top + "px"
+				this.oX = parseInt(Math.random() * 9) - 1;
+				this.oY = parseInt(Math.random() * 10) - 1;
+
+				this.tex()
+			}
+			Arr.prototype.tex = function() {
+
+				var sty = this
+				var jishi = setInterval(function() {
+
+					sty.left += sty.oX
+					sty.top += sty.oY
+					sty.qiu.style.left = sty.left + "px"
+					sty.qiu.style.top = sty.top + "px"
+					if(sty.left >= box.clientWidth - sty.lol || sty.left <= 0)
+					{ sty.oX = -sty.oX ;yin.load();yin.play()}
+
+					if(sty.top >= box.clientHeight - sty.lol || sty.top <= 0) { sty.oY = -sty.oY ;yin.load();yin.play()}
+				}, 90)
+				console.log(sty.left)
+
+			}
+
+			for (var i = 0; i <10; i++) {
+				new Arr()
+			}
+
+			//		new Arr(Math.random() * 700, Math.random() * 500)
+			//		new Arr(Math.random() * 700, Math.random() * 500)
+		</script>
+
+	</body>
+
+</html>
